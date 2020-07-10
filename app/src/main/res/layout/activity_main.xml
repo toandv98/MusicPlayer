@@ -1,18 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionPlayer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    app:layoutDescription="@xml/activity_main_scene"
+    tools:context=".ui.main.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <FrameLayout
+        android:id="@+id/frameBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/seekDuration">
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPlayList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:elevation="@dimen/elevation_1dp"
+        android:nestedScrollingEnabled="false"
+        android:paddingBottom="@dimen/padding_100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/playerImage"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/icon_size_60dp"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginBottom="@dimen/margin_16dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/description_player_image"
+        android:src="@drawable/ic_baseline_album"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+    <TextView
+        android:id="@+id/tvPlayTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/text_size_large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/btnPrevious"
+        app:layout_constraintStart_toEndOf="@+id/playerImage"
+        app:layout_constraintTop_toTopOf="@+id/playerImage" />
+
+    <TextView
+        android:id="@+id/tvPlayArtist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintEnd_toEndOf="@+id/tvPlayTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvPlayTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlayTitle" />
+
+    <ImageButton
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_12dp"
+        android:layout_marginBottom="@dimen/margin_24dp"
+        android:adjustViewBounds="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/description_play_button"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_play_circle_outline"
+        android:tag="tag_play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNext" />
+
+    <ImageButton
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:adjustViewBounds="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/description_next_button"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_skip_next"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnPlay" />
+
+    <ImageButton
+        android:id="@+id/btnPrevious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_12dp"
+        android:adjustViewBounds="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/description_previous_button"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_skip_previous"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPlay"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlay"
+        app:layout_constraintTop_toTopOf="@+id/btnPlay" />
+
+    <SeekBar
+        android:id="@+id/seekDuration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:layout_marginBottom="@dimen/margin_48dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:splitTrack="false"
+        android:thumbTint="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/playerImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:thumbColor="@android:color/darker_gray"
+        app:trackColor="?android:attr/textColorSecondary" />
+
+    <TextView
+        android:id="@+id/tvCurrentTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintStart_toStartOf="@+id/seekDuration"
+        app:layout_constraintTop_toBottomOf="@+id/seekDuration" />
+
+    <TextView
+        android:id="@+id/tvDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintEnd_toEndOf="@+id/seekDuration"
+        app:layout_constraintTop_toBottomOf="@+id/seekDuration" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

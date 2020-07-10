@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingStart="@dimen/padding_16dp"
+    android:paddingTop="@dimen/padding_8dp"
+    android:paddingEnd="@dimen/padding_16dp"
+    android:paddingBottom="@dimen/padding_8dp">
+
+    <TextView
+        android:id="@+id/tvSongArtist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvSongTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvSongTitle"
+        tools:text="ca si" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageThumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/image_size_item"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/description_song_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        app:srcCompat="@drawable/ic_baseline_album" />
+
+    <TextView
+        android:id="@+id/tvSongTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8dp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="@dimen/text_size_normal"
+        app:layout_constraintBottom_toTopOf="@+id/tvSongArtist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageThumbnail"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Ten bai hat" />
+</androidx.constraintlayout.widget.ConstraintLayout>
