@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Music Player</string>
+    <string name="description_player_image">Player image</string>
+    <string name="description_song_image">Song image</string>
+    <string name="description_play_button">Play button</string>
+    <string name="description_next_button">Next button</string>
+    <string name="description_previous_button">Previous button</string>
+    <string name="player_channel_name">Music player</string>
+    <string name="title_music_player">Music player</string>
+    <string name="action_button_previous">Previous</string>
+    <string name="action_button_play">Play</string>
+    <string name="action_button_pause">Pause</string>
+    <string name="action_button_next">Next</string>
+    <string name="action_button_close">Close</string>
+    <string name="permission_denied">Permission denied!</string>
 </resources>
